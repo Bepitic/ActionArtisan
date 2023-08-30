@@ -45,4 +45,4 @@ The app's backend is powered by AWS Lambda and API Gateway, which communicate wi
 
 ## License
 
-This project is licensed under the [GPL-3 License](https://github.com/Bepitic/ActionArtisan/blob/main/LICENSE).
+This project is licensed under the [GNU-3 License](https://github.com/Bepitic/ActionArtisan/blob/main/LICENSE).
