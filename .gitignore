@@ -1,9 +1,11 @@
 # See https://www.dartlang.org/guides/libraries/private-files
 
+
+# FLUTTER IN explain_rol
 # Files and directories created by pub
-.dart_tool/
-.packages
-build/
+explain_rol/.dart_tool/
+explain_rol/.packages
+explain_rol/build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
 
@@ -12,7 +14,7 @@ pubspec.lock
 doc/api/
 
 # dotenv environment variables file
-.env*
+explain_rol/.env*
 
 # Avoid committing generated Javascript files:
 *.dart.js
@@ -23,5 +25,9 @@ doc/api/
 *.js.deps
 *.js.map
 
-.flutter-plugins
-.flutter-plugins-dependencies
+explain_rol/.flutter-plugins
+explain_rol/.flutter-plugins-dependencies
+
+# MAC
+*.DS_Store
+
