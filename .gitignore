@@ -1,5 +1,7 @@
 # See https://www.dartlang.org/guides/libraries/private-files
 
+# Lambda key
+Lambda_AWS/env.py
 
 # FLUTTER IN explain_rol
 # Files and directories created by pub
