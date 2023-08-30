@@ -15,26 +15,38 @@ The ActionArtisan app is a tool designed to assist Dungeon Masters (DMs) in crea
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/bepitic/ActionArtisan.git`
-2. Navigate to the `dungeon-describer` directory: `cd dungeon-describer`
-3. Install dependencies: `flutter pub get`
-4. Run the app: `flutter run`
+
+### Flutter
+
+1. Navigate to the `explain_rol` directory: `cd explain_rol`
+2. Add the link and path to the API in `_env`
+3. Rename `_env` to `.env`
+4. Install dependencies: `flutter pub get`
+5. Run the app: `flutter run`
+
+### AWS Lambda Backend
+
+The app's backend is powered by AWS Lambda and API Gateway, which communicate with OpenAI's API to generate narrations. Make sure to set up the backend by following these steps:
+
+1. Create an AWS Lambda function that handles the API Gateway requests. 
+2. Copy the Lambda file `Lambda_AWS/Lambda_function.py` into aws lambda.
+3. Provide the api key of openAI in the KEY variable of _env.py
+4. Copy `_env.py` into the lambda function as `env.py` (without the `_` )
+5. Set up an API Gateway with appropriate routes and methods(Push) to trigger the Lambda function.
+6. Update the route and path of the API into the `.env` variable in flutter
 
 ## Usage
 
 1. Launch the app on your Android or iOS device.
-2. Select the type of description you want to create (e.g., action, environment, dialogue).
-3. Provide any relevant context or details.
-4. Tap the "Generate" button.
+2. Provide the name of the character and its race.
+3. Provide the difficulty of the action,and the final result of the dice(with all the modificators).
+4. Tap the "Give me a Narration" button.
 5. The app will send a request to the serverless backend, which communicates with OpenAI's API.
 6. Once the narration is received, it will be displayed on the screen.
 7. Customize the narration further or use it as-is in your game.
 
 ## Backend Configuration
 
-The app's backend is powered by AWS Lambda and API Gateway, which communicate with OpenAI's API to generate narrations. Make sure to set up the backend by following these steps:
-
-1. Create an AWS Lambda function that handles the API Gateway requests. You can find a sample Lambda function in the `backend/lambda` directory.
-2. Set up an API Gateway with appropriate routes and methods to trigger the Lambda function.
 3. Obtain an API key or authentication token from OpenAI for making requests to their API.
 4. Configure the app's frontend to send requests to the API Gateway endpoint, including the necessary authentication.
 
