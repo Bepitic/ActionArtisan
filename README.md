@@ -2,7 +2,8 @@
 
 The ActionArtisan app is a tool designed to assist Dungeon Masters (DMs) in creating vivid and immersive descriptions for various actions and scenarios in their tabletop role-playing games. This app leverages the power of OpenAI's natural language generation to provide dynamic and creative narratives that enhance the gaming experience.
 
-![App Screenshot](screenshot.png) <!-- Replace with an actual screenshot of your app -->
+<!-- ![App Screenshot](screenshot.png) Replace with an actual screenshot of your app -->
+<img src="screenshot.png" width=30% height=30%>
 
 ## Features
 
@@ -44,4 +45,4 @@ The app's backend is powered by AWS Lambda and API Gateway, which communicate wi
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GPL-3 License](https://github.com/Bepitic/ActionArtisan/blob/main/LICENSE).
