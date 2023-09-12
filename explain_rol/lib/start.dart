@@ -230,7 +230,10 @@ Future futureRequestMethod(Map<String, String> toSend) async {
   );
 
   var response = await http.post(url,
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "X-Api-Key": dotenv.env['API_KEY']!,
+        "Content-Type": "application/json"
+      },
       body: jsonEncode({
         "name": toSend['name'],
         "race": toSend['race'],
