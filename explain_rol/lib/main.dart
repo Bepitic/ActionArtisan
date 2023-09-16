@@ -3,7 +3,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'start.dart';
 
 Future<void> main() async {
-  await dotenv.load();
+  try {
+    await dotenv.load();
+  } on Exception catch (_) {
+    print("dotenv error");
+    // throw Exception("Error on server");
+  }
   runApp(const MyApp());
 }
 
