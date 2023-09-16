@@ -19,7 +19,7 @@ jobs:
         run: |      
           echo "API_AUTHORITY=${{ secrets.API_AUTHORITY }}" >> .env
           echo "API_PATH=${{ secrets.API_PATH }}" >> .env
-          echo "API_KEY${{ secrets.API_KEY }}" >> .env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
 
       - uses: subosito/flutter-action@v2
         with:
