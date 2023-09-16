@@ -11,6 +11,7 @@ jobs:
     # (2)
     steps:
       - name: Create .env file 🔐
+        working-directory: "explain_rol"
         uses: ozaytsev86/create-env-file@v1
         with:
           API_AUTHORITY: ${{ secrets.API_AUTHORITY }}
