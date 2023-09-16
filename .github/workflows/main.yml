@@ -15,12 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create .env file 🔐
-        uses: ozaytsev86/create-env-file@v1
-        with:
-          INPUT_ENV_API_AUTHORITY: ${{ secrets.API_AUTHORITY }}
-          INPUT_ENV_API_PATH: ${{ secrets.API_PATH }}
-          INPUT_ENV_API_KEY: ${{ secrets.API_KEY }}
+      - name: Create .env file 🔑
+        run: |      
+          echo "API_AUTHORITY=${{ secrets.API_AUTHORITY }}" >> .env
+          echo "API_PATH=${{ secrets.API_PATH }}" >> .env
+          echo "API_KEY${{ secrets.API_KEY }}" >> .env
 
       - uses: subosito/flutter-action@v2
         with:
