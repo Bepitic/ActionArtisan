@@ -35,7 +35,7 @@ jobs:
 
       - name: 🏭 Build Web Application
         # working-directory: "explain_rol"
-        run: flutter build web --release --pwa-strategy=none
+        run: flutter build web --release --base-href=""
 
       # (3)
       - name: Make copy of artifacts
