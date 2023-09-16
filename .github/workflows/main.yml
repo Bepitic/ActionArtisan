@@ -15,8 +15,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-      - name: Move to flutter app
-
+          
       - name: 🌍 Enable Web
         working-directory: ./explain_rol
         run: flutter config --enable-web
