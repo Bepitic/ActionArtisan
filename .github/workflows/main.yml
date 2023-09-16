@@ -4,6 +4,9 @@ name: On Website Deploy
     # (1)
     branches:
       - "main"
+defaults:
+ run:
+  working-directory: ./explain_rol
 jobs:
   build_and_deploy_web:
     name: Build & Deploy Flutter to Web
@@ -11,7 +14,7 @@ jobs:
     # (2)
     steps:
       - name: Create .env file 🔐
-        working-directory: "explain_rol"
+        # working-directory: "explain_rol"
         uses: ozaytsev86/create-env-file@v1
         with:
           API_AUTHORITY: ${{ secrets.API_AUTHORITY }}
@@ -25,15 +28,15 @@ jobs:
           channel: "stable"
           
       - name: 🌍 Enable Web
-        working-directory: "explain_rol"
+        # working-directory: "explain_rol"
         run: flutter config --enable-web
 
       - name: 📦 Get packages
-        working-directory: "explain_rol"
+        # working-directory: "explain_rol"
         run: flutter pub get
 
       - name: 🏭 Build Web Application
-        working-directory: "explain_rol"
+        # working-directory: "explain_rol"
         run: flutter build web --release
 
       # (3)
