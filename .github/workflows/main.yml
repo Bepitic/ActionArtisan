@@ -21,6 +21,7 @@ jobs:
         run: flutter config --enable-web
 
       - name: 📦 Get packages
+        working-directory: "explain_rol"
         run: flutter pub get
 
       - name: 🏭 Build Web Application
