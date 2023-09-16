@@ -16,15 +16,16 @@ jobs:
         with:
           channel: "stable"
       - name: Move to flutter app
-        run: cd explain_rol
 
       - name: 🌍 Enable Web
+        working-directory: ./explain_rol
         run: flutter config --enable-web
 
       - name: 📦 Get packages
         run: flutter pub get
 
       - name: 🏭 Build Web Application
+        working-directory: ./explain_rol
         run: flutter build web --release
 
       # (3)
