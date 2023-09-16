@@ -17,14 +17,14 @@ jobs:
           channel: "stable"
           
       - name: 🌍 Enable Web
-        working-directory: "${GITHUB_WORKSPACE}/explain_rol"
+        working-directory: "explain_rol"
         run: flutter config --enable-web
 
       - name: 📦 Get packages
         run: flutter pub get
 
       - name: 🏭 Build Web Application
-        working-directory: "${GITHUB_WORKSPACE}/explain_rol"
+        working-directory: "explain_rol"
         run: flutter build web --release
 
       # (3)
