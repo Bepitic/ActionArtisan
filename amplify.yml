@@ -1,0 +1,17 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        prebuild:
+          commands:
+            - flutter pub get
+        build:
+          commands:
+            - flutter build web
+      artifacts:
+        baseDirectory: /
+        files:
+          - '**/*'
+      cache:
+        paths: []
+    appRoot: explain_rol
