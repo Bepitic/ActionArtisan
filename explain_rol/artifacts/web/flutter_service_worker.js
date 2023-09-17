@@ -11,9 +11,9 @@ const RESOURCES = {"canvaskit/chromium/canvaskit.js": "96ae916cd2d1b7320fff853ee
 "canvaskit/canvaskit.wasm": "19d8b35640d13140fe4e6f3b8d450f04",
 "canvaskit/skwasm.wasm": "d1fde2560be92c0b07ad9cf9acb10d05",
 "assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
-"assets/AssetManifest.json": "63dc444ad5292e6e00da799aa915f76a",
+"assets/AssetManifest.json": "fc8d475c85052035d8c7b98d0a64eadb",
 "assets/NOTICES": "839e6976f82afdd65feb23e1cab3dd26",
-"assets/AssetManifest.bin": "c0ef4330024be4703d5977b17c60d72f",
+"assets/AssetManifest.bin": "c3c958a1e0a06b05e10f0e6057531a07",
 "assets/packages/amplify_auth_cognito_dart/lib/src/workers/workers.min.js": "a5b54484cd29378ea9b2ba0676a6ac4b",
 "assets/packages/amplify_auth_cognito_dart/lib/src/workers/workers.min.js.map": "dfbeb8721b9c5f63fce1407a88195d2f",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "89ed8f4e49bcdfc0b5bfc9b24591e347",
@@ -29,10 +29,10 @@ const RESOURCES = {"canvaskit/chromium/canvaskit.js": "96ae916cd2d1b7320fff853ee
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "flutter.js": "6fef97aeca90b426343ba6c5c9dc5d4a",
-"index.html": "cab3bc8d3ca8af0cc0be5f0be7451d83",
-"/": "cab3bc8d3ca8af0cc0be5f0be7451d83",
+"index.html": "af3fab95f21f8af01b3faf8db850ef0c",
+"/": "af3fab95f21f8af01b3faf8db850ef0c",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"main.dart.js": "c5f7115ee83c7c4b1e406c89b3876b04",
+"main.dart.js": "5c905a6110de2c728d67a97c2fe560d8",
 "manifest.json": "9cdfd31fc903832aa300d53b9a4753b0"};
 // The application shell files that are downloaded before a service worker can
 // start.
