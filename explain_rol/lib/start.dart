@@ -45,9 +45,7 @@ class _DataFormState extends State<DataForm> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(18.0),
-                    child: Center(
-                        child: Text(String.fromEnvironment('API_AUTHORITY',
-                            defaultValue: 'no found'))),
+                    child: Center(child: Text("ad")),
                   ),
                   Row(
                     children: [
