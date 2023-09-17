@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create .env file 🔑
-        run: |      
-          echo "API_AUTHORITY=${{ secrets.API_AUTHORITY }}" >> .env
-          echo "API_PATH=${{ secrets.API_PATH }}" >> .env
-          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+      # - name: Create .env file 🔑
+      #   run: |      
+      #     echo "API_AUTHORITY=${{ secrets.API_AUTHORITY }}" >> .env
+      #     echo "API_PATH=${{ secrets.API_PATH }}" >> .env
+      #     echo "API_KEY=${{ secrets.API_KEY }}" >> .env
 
       - uses: subosito/flutter-action@v2
         with:
@@ -34,6 +34,10 @@ jobs:
         run: flutter pub get
 
       - name: 🏭 Build Web Application
+        env: # Or as an environment variable
+          API_PATH: ${{ secrets.API_PATH }}
+          API_AUTHORITY: ${{ secrets.API_AUTHORITY }}
+          # API_KEY: ${{ secrets.API_KEY }}
         # working-directory: "explain_rol"
         run: flutter build web --release --dart-define=API_PATH=$API_PATH  --dart-define=API_AUTHORITY=$API_AUTHORITY --dart-define=API_KEY=$API_KEY
 
