@@ -19,10 +19,9 @@ The ActionArtisan app is a tool designed to assist Dungeon Masters (DMs) in crea
 ### Flutter
 
 1. Navigate to the `explain_rol` directory: `cd explain_rol`
-2. Add the link and path to the API in `_env`
-3. Rename `_env` to `.env`
+2. Add 3 environmental variables, `API_AUTHORITY -> link to the API`, `API_PATH ->API path`, `API_KEY -> API_KEY`
 4. Install dependencies: `flutter pub get`
-5. Run the app: `flutter run`
+5. Run the app: `flutter build web  --dart-define=API_AUTHORITY=$API_AUTHORITY --dart-define=API_PATH=$API_PATH --dart-define=API_KEY=$API_KEY`
 
 ### AWS Lambda Backend
 
@@ -33,7 +32,7 @@ The app's backend is powered by AWS Lambda and API Gateway, which communicate wi
 3. Provide the api key of openAI in the KEY variable of _env.py
 4. Copy `_env.py` into the lambda function as `env.py` (without the `_` )
 5. Set up an API Gateway with appropriate routes and methods(Push) to trigger the Lambda function.
-6. Update the route and path of the API into the `.env` variable in flutter
+6. Update the route and path of the API into the add 3 environmental variables in flutter
 
 ## Usage
 
