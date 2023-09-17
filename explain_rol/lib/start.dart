@@ -231,7 +231,7 @@ Future futureRequestMethod(Map<String, String> toSend) async {
 
   var response = await http.post(url,
       headers: {
-        "X-Api-Key": const String.fromEnvironment('API_key', defaultValue: ''),
+        "X-Api-Key": const String.fromEnvironment('API_KEY', defaultValue: ''),
         "Content-Type": "application/json"
       },
       body: jsonEncode({
