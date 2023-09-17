@@ -223,15 +223,15 @@ class _DataFormState extends State<DataForm> {
 
 Future futureRequestMethod(Map<String, String> toSend) async {
   // here is the code that you will request the data with in the end as example:
-  dotenv.env['VAR_NAME'];
+  // dotenv.env['VAR_NAME'];
   var url = Uri.https(
-    dotenv.env['API_AUTHORITY']!,
-    dotenv.env['API_PATH']!,
+    const String.fromEnvironment('API_AUTHORITY', defaultValue: ''),
+    const String.fromEnvironment('API_PATH', defaultValue: ''),
   );
 
   var response = await http.post(url,
       headers: {
-        "X-Api-Key": dotenv.env['API_KEY']!,
+        "X-Api-Key": const String.fromEnvironment('API_key', defaultValue: ''),
         "Content-Type": "application/json"
       },
       body: jsonEncode({

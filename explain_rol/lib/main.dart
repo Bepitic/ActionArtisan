@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'start.dart';
 
 Future<void> main() async {
-  try {
-    await dotenv.load();
-  } on Exception catch (_) {
-    print("dotenv error");
-    // throw Exception("Error on server");
-  }
+  // try {
+  //   await dotenv.load();
+  // } on Exception catch (_) {
+  //   // print("dotenv error");
+  //   dotenv.env['foo'] = 'asdfasdfasdf';
+  //   print(dotenv.env['foo']);
+  //   // throw Exception("Error on server");
+  // }
   runApp(const MyApp());
 }
 
