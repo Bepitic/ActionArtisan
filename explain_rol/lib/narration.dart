@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+
+import 'package:rounded_background_text/rounded_background_text.dart';
+
 // import 'package:http/http.dart' as http;
 
 class NarrationScene extends StatelessWidget {
@@ -14,28 +17,41 @@ class NarrationScene extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        elevation: 0,
         title: const Text('Narration'),
       ),
-      body: FutureBuilder(
-          future: narration(valu),
-          builder: (context, snapshot) {
-            // Here you told Flutter to use the word "snapshot".
-            if (snapshot.hasData) {
-              // print("Data snapshot");
-              // print(snapshot.data.toString());
-              var dta = jsonDecode(((snapshot.data) as Response).body);
-              return NarrationOk(narrationn: dta['content'].toString());
-            } else {
-              return const Center(
-                  child: Column(
-                children: [
-                  Text("Usually takes 10s"),
-                  CircularProgressIndicator(),
-                ],
-              ));
-            }
-          }),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage("asset/img/Narrator.jpeg"),
+          ),
+        ),
+        child: FutureBuilder(
+            future: narration(valu),
+            builder: (context, snapshot) {
+              // Here you told Flutter to use the word "snapshot".
+              if (snapshot.hasData) {
+                // print("Data snapshot");
+                // print(snapshot.data.toString());
+                var dta = jsonDecode(((snapshot.data) as Response).body);
+                return NarrationOk(narrationn: dta['content'].toString());
+              } else {
+                return const Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Usually takes 10s"),
+                    CircularProgressIndicator(),
+                  ],
+                ));
+              }
+            }),
+      ),
     );
   }
 }
@@ -63,7 +79,8 @@ class NarrationOk extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical, child: Text(narrationn)),
+                  scrollDirection: Axis.vertical,
+                  child: RoundedBackgroundText(narrationn)),
             ),
             // Flexible(child: Center(child: Text(narration))),
             ElevatedButton(

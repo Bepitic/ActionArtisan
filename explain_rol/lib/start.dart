@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -29,210 +30,258 @@ class _DataFormState extends State<DataForm> {
     var difficultyVal = 1;
     // var response;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        elevation: 0,
+        centerTitle: false,
+        // leadingWidth: 0,
+        // backgroundColor: Colors.grey[350],
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // AssetImage("img/background.jpeg"),
             Image.asset(
-              "img/icn.png",
+              "asset/img/icn.png",
               fit: BoxFit.fill,
               height: 50,
             ),
             Container(
                 padding: const EdgeInsets.all(8.0),
-                child: const Text('ActionArtisan'))
+                child: const Text('ActionArtisan',
+                    style: TextStyle(
+                      fontFamily: 'Dungeon Drop Case',
+                      fontSize: 30, // Change font size
+                      fontWeight: FontWeight.bold,
+                    )))
           ],
         ),
       ),
-      body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("img/background.jpeg"),
-            ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage("asset/img/background.jpeg"),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Form(
-              key: _formKey,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(
+              bottom: 20.0, top: 8.0, left: 8.0, right: 8.0),
+          child: Form(
+            key: _formKey,
+            child: Center(
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(18.0),
-                      child: Center(child: Text("ad")),
-                    ),
-                    Row(
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(182, 232, 198, 162),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Flexible(
-                            child: TextFormField(
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) =>
-                              {toSend["name"] = newValue.toString()},
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.person_outline_sharp),
-                            hintText: 'Name',
-                            helperText: 'Name',
-                            border: OutlineInputBorder(),
-                          ),
-                        )),
-                        Flexible(
-                            child: TextFormField(
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) =>
-                              {toSend["race"] = newValue.toString()},
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.person_3),
-                            hintText: 'Race',
-                            helperText: 'Race',
-                            border: OutlineInputBorder(),
-                          ),
-                        ))
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      children: [
-                        Flexible(
-                            child: DropdownButtonFormField(
-                          onSaved: (newValue) =>
-                              {toSend["difficulty"] = newValue.toString()},
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.menu_book_rounded),
-                            hintText: 'Dificulty',
-                            helperText: 'Dificulty',
-                            border: OutlineInputBorder(),
-                          ),
-                          isExpanded: true,
-                          hint: const Text("Dificulty num"),
-                          items: const [
-                            DropdownMenuItem<int>(value: 1, child: Text("1")),
-                            DropdownMenuItem(value: 2, child: Text("2")),
-                            DropdownMenuItem(value: 3, child: Text("3")),
-                            DropdownMenuItem(value: 4, child: Text("4")),
-                            DropdownMenuItem(value: 5, child: Text("5")),
-                            DropdownMenuItem(value: 6, child: Text("6")),
-                            DropdownMenuItem(value: 7, child: Text("7")),
-                            DropdownMenuItem(value: 8, child: Text("8")),
-                            DropdownMenuItem(value: 9, child: Text("9")),
-                            DropdownMenuItem(value: 10, child: Text("10")),
-                            DropdownMenuItem(value: 11, child: Text("11")),
-                            DropdownMenuItem(value: 12, child: Text("12")),
-                            DropdownMenuItem(value: 13, child: Text("13")),
-                            DropdownMenuItem(value: 14, child: Text("14")),
-                            DropdownMenuItem(value: 15, child: Text("15")),
-                            DropdownMenuItem(value: 16, child: Text("16")),
-                            DropdownMenuItem(value: 17, child: Text("17")),
-                            DropdownMenuItem(value: 18, child: Text("18")),
-                            DropdownMenuItem(value: 19, child: Text("19")),
-                            DropdownMenuItem(value: 20, child: Text("20"))
-                          ],
-                          value: difficultyVal,
-                          onChanged: (value) {
-                            difficultyVal = value!;
-                            setState(() {});
-                          },
-                        )),
-                        Flexible(
-                            child: DropdownButtonFormField(
-                          onSaved: (newValue) =>
-                              {toSend["dice"] = newValue.toString()},
-                          decoration: const InputDecoration(
-                            icon: Icon(Icons.casino_rounded),
-                            hintText: 'Dice Number',
-                            helperText: 'Final Modificator',
-                            border: OutlineInputBorder(),
-                          ),
-                          isExpanded: true,
-                          hint: const Text("Dice num"),
-                          items: const [
-                            DropdownMenuItem<int>(value: 1, child: Text("1")),
-                            DropdownMenuItem(value: 2, child: Text("2")),
-                            DropdownMenuItem(value: 3, child: Text("3")),
-                            DropdownMenuItem(value: 4, child: Text("4")),
-                            DropdownMenuItem(value: 5, child: Text("5")),
-                            DropdownMenuItem(value: 6, child: Text("6")),
-                            DropdownMenuItem(value: 7, child: Text("7")),
-                            DropdownMenuItem(value: 8, child: Text("8")),
-                            DropdownMenuItem(value: 9, child: Text("9")),
-                            DropdownMenuItem(value: 10, child: Text("10")),
-                            DropdownMenuItem(value: 11, child: Text("11")),
-                            DropdownMenuItem(value: 12, child: Text("12")),
-                            DropdownMenuItem(value: 13, child: Text("13")),
-                            DropdownMenuItem(value: 14, child: Text("14")),
-                            DropdownMenuItem(value: 15, child: Text("15")),
-                            DropdownMenuItem(value: 16, child: Text("16")),
-                            DropdownMenuItem(value: 17, child: Text("17")),
-                            DropdownMenuItem(value: 18, child: Text("18")),
-                            DropdownMenuItem(value: 19, child: Text("19")),
-                            DropdownMenuItem(value: 20, child: Text("20"))
-                          ],
-                          value: diceVal,
-                          onChanged: (value) {
-                            diceVal = value!;
-                            setState(() {});
-                          },
-                        ))
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    Flexible(
-                        child: TextFormField(
-                      onSaved: (newValue) =>
-                          {toSend["action"] = newValue.toString()},
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                        icon: Icon(Icons.type_specimen_rounded),
-                        hintText: 'jump over a cliff',
-                        prefixText: "Tried to ",
-                        helperText: 'Action',
-                        border: OutlineInputBorder(),
-                      ),
-                    )),
-                    ElevatedButton(
-                      child: const Text("Give me a Narration"),
-                      // onPressed: () => {Navigator.pushNamed(context, '/narration')},
-                      onPressed: () async => {
-                        if (_formKey.currentState!.validate())
-                          {
-                            _formKey.currentState?.save(),
-                            // print(to_send),
-                            // response = futureRequestMethod(to_send),
-                            // print('Response status: ${response.statusCode}'),
-                            // print('Response body: ${response.body}'),
-
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => NarrationScene(
-                                    narration: futureRequestMethod,
-                                    valu: toSend),
+                        // const SizedBox(height: 50),
+                        const Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Center(
+                            child: Text(
+                              "Action Artisan \n is a specialized application designed for Dungeons & Dragons players. It takes inputs such as the character's name, race, difficulty level, the number of dice thrown, and the chosen action. Using this information, the app generates a narrative description of the action, incorporating the character's race and difficulty level to create an immersive storytelling experience. \n For example, it might describe a character named 'Aldric', an elven rogue, attempting a challenging acrobatic maneuver by rolling a set of dice, resulting in a vivid and tailored narrative that aligns with Aldric's unique characteristics and the action performed, enriching the tabletop role-playing experience.",
+                              style: TextStyle(
+                                fontFamily: 'Bookinsanity',
+                                fontSize: 17, // Change font size
+                                color: Color.fromARGB(
+                                    255, 0, 0, 0), // Change text color
+                                fontStyle: FontStyle
+                                    .italic, // Change text style (italic)
+                                // letterSpacing: 1.0, // Change letter spacing
+                                // You can customize other properties here as well
                               ),
                             ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Flexible(
+                                child: TextFormField(
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              onSaved: (newValue) =>
+                                  {toSend["name"] = newValue.toString()},
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.person_outline_sharp),
+                                hintText: 'Name',
+                                helperStyle: TextStyle(color: Colors.black87),
+                                helperText:
+                                    'Name of the character that will perform the action',
+                                border: OutlineInputBorder(),
+                              ),
+                            )),
+                            Flexible(
+                                child: TextFormField(
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
+                              onSaved: (newValue) =>
+                                  {toSend["race"] = newValue.toString()},
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.person_3),
+                                hintText: 'Race',
+                                helperText:
+                                    'What is the race of the character ( Human, Elf, Orc, ...)',
+                                helperStyle: TextStyle(color: Colors.black87),
+                                border: OutlineInputBorder(),
+                              ),
+                            ))
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            Flexible(
+                                child: DropdownButtonFormField(
+                              onSaved: (newValue) =>
+                                  {toSend["difficulty"] = newValue.toString()},
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.menu_book_rounded),
+                                hintText: 'Dificulty',
+                                helperText:
+                                    'What is the difficulty attached to the action from 1(min) to 20(max)',
+                                helperStyle: TextStyle(color: Colors.black87),
+                                border: OutlineInputBorder(),
+                              ),
+                              isExpanded: true,
+                              hint: const Text("Dificulty num"),
+                              items: const [
+                                DropdownMenuItem<int>(
+                                    value: 1, child: Text("1")),
+                                DropdownMenuItem(value: 2, child: Text("2")),
+                                DropdownMenuItem(value: 3, child: Text("3")),
+                                DropdownMenuItem(value: 4, child: Text("4")),
+                                DropdownMenuItem(value: 5, child: Text("5")),
+                                DropdownMenuItem(value: 6, child: Text("6")),
+                                DropdownMenuItem(value: 7, child: Text("7")),
+                                DropdownMenuItem(value: 8, child: Text("8")),
+                                DropdownMenuItem(value: 9, child: Text("9")),
+                                DropdownMenuItem(value: 10, child: Text("10")),
+                                DropdownMenuItem(value: 11, child: Text("11")),
+                                DropdownMenuItem(value: 12, child: Text("12")),
+                                DropdownMenuItem(value: 13, child: Text("13")),
+                                DropdownMenuItem(value: 14, child: Text("14")),
+                                DropdownMenuItem(value: 15, child: Text("15")),
+                                DropdownMenuItem(value: 16, child: Text("16")),
+                                DropdownMenuItem(value: 17, child: Text("17")),
+                                DropdownMenuItem(value: 18, child: Text("18")),
+                                DropdownMenuItem(value: 19, child: Text("19")),
+                                DropdownMenuItem(value: 20, child: Text("20"))
+                              ],
+                              value: difficultyVal,
+                              onChanged: (value) {
+                                difficultyVal = value!;
+                                setState(() {});
+                              },
+                            )),
+                            Flexible(
+                                child: DropdownButtonFormField(
+                              onSaved: (newValue) =>
+                                  {toSend["dice"] = newValue.toString()},
+                              decoration: const InputDecoration(
+                                icon: Icon(Icons.casino_rounded),
+                                hintText: 'Dice Number',
+                                helperText:
+                                    'What is the number that got in the dice or, what is its final modificator?',
+                                helperStyle: TextStyle(color: Colors.black87),
+                                border: OutlineInputBorder(),
+                              ),
+                              isExpanded: true,
+                              hint: const Text("Dice num"),
+                              items: const [
+                                DropdownMenuItem<int>(
+                                    value: 1, child: Text("1")),
+                                DropdownMenuItem(value: 2, child: Text("2")),
+                                DropdownMenuItem(value: 3, child: Text("3")),
+                                DropdownMenuItem(value: 4, child: Text("4")),
+                                DropdownMenuItem(value: 5, child: Text("5")),
+                                DropdownMenuItem(value: 6, child: Text("6")),
+                                DropdownMenuItem(value: 7, child: Text("7")),
+                                DropdownMenuItem(value: 8, child: Text("8")),
+                                DropdownMenuItem(value: 9, child: Text("9")),
+                                DropdownMenuItem(value: 10, child: Text("10")),
+                                DropdownMenuItem(value: 11, child: Text("11")),
+                                DropdownMenuItem(value: 12, child: Text("12")),
+                                DropdownMenuItem(value: 13, child: Text("13")),
+                                DropdownMenuItem(value: 14, child: Text("14")),
+                                DropdownMenuItem(value: 15, child: Text("15")),
+                                DropdownMenuItem(value: 16, child: Text("16")),
+                                DropdownMenuItem(value: 17, child: Text("17")),
+                                DropdownMenuItem(value: 18, child: Text("18")),
+                                DropdownMenuItem(value: 19, child: Text("19")),
+                                DropdownMenuItem(value: 20, child: Text("20"))
+                              ],
+                              value: diceVal,
+                              onChanged: (value) {
+                                diceVal = value!;
+                                setState(() {});
+                              },
+                            ))
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        Flexible(
+                            child: TextFormField(
+                          onSaved: (newValue) =>
+                              {toSend["action"] = newValue.toString()},
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
                           },
-                      },
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.type_specimen_rounded),
+                            hintText: 'jump over a cliff',
+                            // prefix: Text('Tried to '),
+                            prefixIcon: Padding(
+                                padding: EdgeInsets.all(15),
+                                child: Text('Tried to ')),
+                            helperText:
+                                'Action that the character will try to do.',
+                            helperStyle: TextStyle(color: Colors.black87),
+                            prefixStyle: TextStyle(color: Colors.black87),
+                            border: OutlineInputBorder(),
+                          ),
+                        )),
+                        ElevatedButton(
+                          child: const Text("Give me a Narration"),
+                          // onPressed: () => {Navigator.pushNamed(context, '/narration')},
+                          onPressed: () async => {
+                            if (_formKey.currentState!.validate())
+                              {
+                                _formKey.currentState?.save(),
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => NarrationScene(
+                                        narration: futureRequestMethod,
+                                        valu: toSend),
+                                  ),
+                                ),
+                              },
+                          },
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
