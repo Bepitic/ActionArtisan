@@ -30,7 +30,7 @@ class NarrationScene extends StatelessWidget {
               return const Center(
                   child: Column(
                 children: [
-                  Text("Ussualy takes 10s"),
+                  Text("Usually takes 10s"),
                   CircularProgressIndicator(),
                 ],
               ));
