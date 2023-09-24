@@ -1,6 +1,6 @@
 import json
 import openai
-import env as config
+import os
 
 print('Loading function')
 
@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     luck_outcome = luck(int(event['dice']), int(event['difficulty']))
     print("b4 openai")
 
-    openai.api_key = config.KEY
+    openai.api_key = os.environ['KEY']
     res = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
       messages=[

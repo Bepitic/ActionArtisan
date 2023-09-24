@@ -1,1 +1,0 @@
-KEY = 'THE OPENAI KEY'
