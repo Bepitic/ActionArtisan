@@ -41,6 +41,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^1.1.0
+  rounded_background_text: ^0.4.3
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +69,7 @@ flutter:
   # assets:
     # - .env
   assets:
-    - img/
+    - asset/img/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -82,13 +83,27 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Bookinsanity
+      fonts:
+        - asset: asset/fonts/Bookinsanity.otf
+        - asset: asset/fonts/Bookinsanity Italic.otf
+          style: italic
+        - asset: asset/fonts/Bookinsanity Bold.otf
+          weight: 700
+        - asset: asset/fonts/Bookinsanity Bold Italic.otf
+          style: italic
+          weight: 700
+
+    - family: Dungeon Drop Case
+      fonts:
+        - asset: asset/fonts/Dungeon Drop Case.otf
+
+    - family: MedievalSharp
+      fonts:
+        - asset: asset/fonts/MedievalSharp-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-  #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
