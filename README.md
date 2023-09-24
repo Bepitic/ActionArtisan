@@ -11,6 +11,7 @@ The ActionArtisan app is a tool designed to assist Dungeon Masters (DMs) in crea
 - Seamless Integration: The app's frontend is developed using Flutter, ensuring a smooth and intuitive user experience on both Android and iOS platforms.
 - AI-powered Narration: The app communicates with a AWS Lambda function through API Gateway, which then interacts with an OpenAI API to retrieve narrations based on the input.
 - Customizable Narratives: Tailor the generated narratives by providing specific details, tones, or styles, enhancing the uniqueness of your storytelling.
+- CI/CD Pipeline: Using Github Actions to build the project, and Amplify to detect the changes and deploy it automatically, the project is automized.
 
 ## Installation
 
