@@ -36,6 +36,13 @@ The app's backend is powered by AWS Lambda and API Gateway, which communicate wi
 
 ## Deployment on Amplify ( Web )
 
+1. Create a new Web app on Amplify.
+2. Connect your github account and select the repo.
+3. Click on the check box to indicate that is a monorepo.
+4. Select the build/web if was compiled localy.
+5. Or select the artifact/web if compiled with the github actions.
+6. select the default build config.
+7. Wait until provision, build and deployment has finished.
 
 ## Usage
 
