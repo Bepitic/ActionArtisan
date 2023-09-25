@@ -1,34 +1,47 @@
+import Scales_data as dta
 import json
 import openai
 import os
+import logging
 
-print('Loading function')
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.info('Loading function')
 
-def lambda_handler(event, context):
-    print(event)
-    event = event["body"]
-    event = json.loads(event)
-    # print(context)
-    print("name = " + event['name'])
-    print("race = " + event['race'])
-    print("action = " + event['action'])
-    print("dice = " + event['dice'])
-    print("difficulty = " + event['difficulty'])
+def lambda_handler(event:dict, context:dict[str,object]) -> dict[str,object]:
+    '''
+    Returns the reversed String.
 
-    difficulty_str = diff(int(event['difficulty']))
-    luck_outcome = luck(int(event['dice']), int(event['difficulty']))
-    print("b4 openai")
+    Parameters:
+        event (json):The http call that came to the lambda in json format.
+        context (dict):The contex object provides methods and properties that provide information about the invocation, function, and execution environment.
+
+    Returns:
+        return(str): A .   
+    '''
+  
+    event_body = event["body"]
+    e_body_json = json.loads(event_body)
+    logger.info("name = " + e_body_json['name'])
+    logger.info("race = " + e_body_json['race'])
+    logger.info("action = " + e_body_json['action'])
+    logger.info("dice = " + e_body_json['dice'])
+    logger.info("difficulty = " + e_body_json['difficulty'])
+
+    difficulty_str = dta.difficulty_scale[int(e_body_json['difficulty'])]
+    luck_outcome = luck(int(e_body_json['dice']), int(e_body_json['difficulty']))
+    logger.info("b4 openai")
 
     openai.api_key = os.environ['KEY']
     res = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
       messages=[
             {"role": "system", "content": "You are a Dungeon Master."},
-            {"role": "user", "content": f"Explain how '{event['name']}' a {event['race']} tried to {event['action']} of {difficulty_str} difficulty and got an{luck_outcome}, in one paragraph"}
+            {"role": "user", "content": f"Explain how '{e_body_json['name']}' a {e_body_json['race']} tried to {e_body_json['action']} of {difficulty_str} difficulty and got an{luck_outcome}, in one paragraph"}
         ]
     )
-    print("after openai")
-    print(res)
+    logger.info("after openai")
+    logger.info(res)
     return {
         'statusCode': 200,
         'headers': {
@@ -36,21 +49,21 @@ def lambda_handler(event, context):
         },
         'body': json.dumps(res['choices'][0]['message'])
     }
-    # return res['choices'][0]['message']
 
-def luck(luck, difficult):
-    achievement_scale = [
-        "Catastrophic Failure",
-        "Significant Failure",
-        "Major Struggle",
-        "Partial Failure",
-        "Barely Missed It",
-        "Barely Got It",
-        "Lucky Success",
-        "Solid Success",
-        "Great Success",
-        "Exceptional Achievement"
-      ]
+
+def luck(luck: int, difficult: int) -> str:
+    '''
+    Returns the achivement String of an action based on the difference in the difficulty and the luck of the character that performs the action.
+
+    Parameters:
+        luck (int):The final modifier that the character has after throwing the dice.
+        difficult (int):The difficulty that the DM(Dungeon Master) gives to the action of the character.
+
+    Returns:
+        resp(str):The achivement based on the difference in the difficulty and the luck of the character.   
+    '''
+
+    achievement_scale = dta.achievement_scale
 
     if luck == 1:
         return achievement_scale[0]
@@ -79,30 +92,3 @@ def luck(luck, difficult):
         resp = achievement_scale[8]
 
     return resp
-
-def diff(num):
-
-    difficulty_scale = [
-      "Extremely Easy",
-      "Very Easy",
-      "Quite Easy",
-      "Easy",
-      "Moderately Easy",
-      "Fairly Easy",
-      "Slightly Easy",
-      "Somewhat Easy",
-      "Neutral/Moderate",
-      "Somewhat Challenging",
-      "Slightly Challenging",
-      "Fairly Challenging",
-      "Moderately Challenging",
-      "Challenging",
-      "Quite Challenging",
-      "Difficult",
-      "Very Difficult",
-      "Extremely Difficult",
-      "Nearly Impossible",
-      "Impossible"
-    ]
-
-    return difficulty_scale[num]
