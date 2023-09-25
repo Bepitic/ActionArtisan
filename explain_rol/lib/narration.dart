@@ -23,12 +23,15 @@ class NarrationScene extends StatelessWidget {
         elevation: 0,
         title: RoundedBackgroundText(
           'Narration',
-          backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+          backgroundColor: Color.fromARGB(223, 245, 229, 212),
           style: const TextStyle(
             fontFamily: 'Dungeon Drop Case',
             fontWeight: FontWeight.bold,
-            fontSize: 30, // Change font size
+            fontSize: 50,
+            // Change font size
           ),
+          outerRadius: 15.0,
+          innerRadius: 15.0,
           textAlign: TextAlign.center,
         ),
       ),
