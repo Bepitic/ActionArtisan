@@ -10,14 +10,14 @@ logger.info('Loading function')
 
 def lambda_handler(event:dict, context:dict[str,object]) -> dict[str,object]:
     '''
-    Returns the reversed String.
+    Returns the response of the api call to openAI that narrates the action of the character.
 
     Parameters:
         event (json):The http call that came to the lambda in json format.
         context (dict):The contex object provides methods and properties that provide information about the invocation, function, and execution environment.
 
     Returns:
-        return(str): A .   
+        return(str): A http response for the call in a json format, and in the body the response of the API call of openAI.   
     '''
   
     event_body = event["body"]
