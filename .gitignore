@@ -33,3 +33,4 @@ explain_rol/.flutter-plugins-dependencies
 # MAC
 *.DS_Store
 
+.vscode/
