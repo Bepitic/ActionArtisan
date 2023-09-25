@@ -23,15 +23,13 @@ class NarrationScene extends StatelessWidget {
         elevation: 0,
         title: RoundedBackgroundText(
           'Narration',
-          backgroundColor: Color.fromARGB(223, 245, 229, 212),
+          backgroundColor: const Color.fromARGB(182, 232, 198, 162),
           style: const TextStyle(
             fontFamily: 'Dungeon Drop Case',
             fontWeight: FontWeight.bold,
-            fontSize: 50,
+            fontSize: 30,
             // Change font size
           ),
-          outerRadius: 15.0,
-          innerRadius: 15.0,
           textAlign: TextAlign.center,
         ),
       ),
@@ -102,11 +100,14 @@ class NarrationOk extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   child: RoundedBackgroundText(
                     narrationn,
-                    backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+                    backgroundColor: const Color.fromARGB(182, 245, 229, 212),
                     style: const TextStyle(
                         fontFamily: 'Bookinsanity',
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
+                    innerRadius: 15.0,
+                    outerRadius: 15.0,
                   )),
             ),
             const SizedBox(height: 5),
