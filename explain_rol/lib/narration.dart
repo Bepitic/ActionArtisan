@@ -41,12 +41,19 @@ class NarrationScene extends StatelessWidget {
                 var dta = jsonDecode(((snapshot.data) as Response).body);
                 return NarrationOk(narrationn: dta['content'].toString());
               } else {
-                return const Center(
+                return Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Usually takes 10s"),
-                    CircularProgressIndicator(),
+                    RoundedBackgroundText(
+                      "Usually takes 10s",
+                      backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+                      style: const TextStyle(
+                          fontFamily: 'Bookinsanity',
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                    ),
+                    const CircularProgressIndicator(),
                   ],
                 ));
               }
