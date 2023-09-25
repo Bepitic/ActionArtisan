@@ -21,7 +21,16 @@ class NarrationScene extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         elevation: 0,
-        title: const Text('Narration'),
+        title: RoundedBackgroundText(
+          'Narration',
+          backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+          style: const TextStyle(
+            fontFamily: 'Dungeon Drop Case',
+            fontWeight: FontWeight.bold,
+            fontSize: 30, // Change font size
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -85,7 +94,7 @@ class NarrationOk extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
+            Center(
               child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: RoundedBackgroundText(
@@ -97,7 +106,7 @@ class NarrationOk extends StatelessWidget {
                     textAlign: TextAlign.center,
                   )),
             ),
-            // Flexible(child: Center(child: Text(narration))),
+            const SizedBox(height: 5),
             ElevatedButton(
               child: const Text("Back"),
               onPressed: () => {Navigator.pop(context, '/')},

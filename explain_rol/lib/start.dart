@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:explain_rol/narration.dart';
 import 'package:flutter/material.dart';
+import 'package:rounded_background_text/rounded_background_text.dart';
 
 class DataForm extends StatefulWidget {
   const DataForm({super.key});
@@ -48,8 +49,9 @@ class _DataFormState extends State<DataForm> {
             ),
             Container(
                 padding: const EdgeInsets.all(8.0),
-                child: const Text('ActionArtisan',
-                    style: TextStyle(
+                child: RoundedBackgroundText('ActionArtisan',
+                    backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+                    style: const TextStyle(
                       fontFamily: 'Dungeon Drop Case',
                       fontSize: 30, // Change font size
                       fontWeight: FontWeight.bold,
@@ -293,8 +295,6 @@ class _DataFormState extends State<DataForm> {
 }
 
 Future futureRequestMethod(Map<String, String> toSend) async {
-  // here is the code that you will request the data with in the end as example:
-  // dotenv.env['VAR_NAME'];
   var url = Uri.https(
     const String.fromEnvironment('API_AUTHORITY', defaultValue: ''),
     const String.fromEnvironment('API_PATH', defaultValue: ''),
