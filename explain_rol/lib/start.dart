@@ -342,7 +342,13 @@ class _DataFormState extends State<DataForm> {
                           ],
                         ),
                         ElevatedButton(
-                          child: const Text("Give me a Narration"),
+                          child: const Text(
+                            "Give me a Narration",
+                            style: TextStyle(
+                                fontFamily: 'Bookinsanity',
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
                           // onPressed: () => {Navigator.pushNamed(context, '/narration')},
                           onPressed: () async => {
                             if (_formKey.currentState!.validate())
