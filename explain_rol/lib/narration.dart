@@ -75,12 +75,20 @@ class NarrationOk extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  child: RoundedBackgroundText(narrationn)),
+                  child: RoundedBackgroundText(
+                    narrationn,
+                    backgroundColor: const Color.fromARGB(182, 232, 198, 162),
+                    style: const TextStyle(
+                        fontFamily: 'Bookinsanity',
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  )),
             ),
             // Flexible(child: Center(child: Text(narration))),
             ElevatedButton(
