@@ -28,11 +28,12 @@ def lambda_handler(event:dict, context:dict[str,object]) -> dict[str,object]:
     logger.info("dice = " + e_body_json['dice'])
     logger.info("difficulty = " + e_body_json['difficulty'])
 
-    difficulty_str = dta.difficulty_scale[int(e_body_json['difficulty'])]
+    difficulty_str = dta._DIFFICULTY_SCALE[int(e_body_json['difficulty'])]
     luck_outcome = luck(int(e_body_json['dice']), int(e_body_json['difficulty']))
     logger.info("b4 openai")
 
-    openai.api_key = os.environ['KEY']
+    # openai.api_key = os.environ['KEY']
+    openai.api_key = os.environ.get('KEY',None)
     res = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
       messages=[
@@ -63,7 +64,7 @@ def luck(luck: int, difficult: int) -> str:
         resp(str):The achivement based on the difference in the difficulty and the luck of the character.   
     '''
 
-    achievement_scale = dta.achievement_scale
+    achievement_scale = dta._ACHIEVEMENT_SCALE
 
     if luck == 1:
         return achievement_scale[0]

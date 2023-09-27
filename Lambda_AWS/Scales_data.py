@@ -1,5 +1,5 @@
 
-achievement_scale = [
+_ACHIEVEMENT_SCALE = [
         "Catastrophic Failure",
         "Significant Failure",
         "Major Struggle",
@@ -12,7 +12,7 @@ achievement_scale = [
         "Exceptional Achievement"
       ]
 
-difficulty_scale = [
+_DIFFICULTY_SCALE = [
       "Extremely Easy",
       "Very Easy",
       "Quite Easy",
