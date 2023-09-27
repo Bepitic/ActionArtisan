@@ -3,6 +3,7 @@ import json
 import openai
 import os
 import logging
+import math
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -57,8 +58,8 @@ def luck(luck: int, difficult: int) -> str:
     Returns the achivement String of an action based on the difference in the difficulty and the luck of the character that performs the action.
 
     Parameters:
-        luck (int):The final modifier that the character has after throwing the dice.
-        difficult (int):The difficulty that the DM(Dungeon Master) gives to the action of the character.
+        luck (int):The final modifier that the character has after throwing the dice.(1-20)
+        difficult (int):The difficulty that the DM(Dungeon Master) gives to the action of the character.(1-20)
 
     Returns:
         resp(str):The achivement based on the difference in the difficulty and the luck of the character.   
@@ -74,22 +75,38 @@ def luck(luck: int, difficult: int) -> str:
     difference = luck - difficult
     resp = achievement_scale[5]
 
-    if difference < 0:
-        resp = achievement_scale[4]
-    if difference < -2:
-        resp = achievement_scale[3]
-    if difference < -5:
-        resp = achievement_scale[2]
-    if difference < -7:
-        resp = achievement_scale[1]
+    if difference < 0 :
+        # negative
+        difference *= -1;
+        difference = (difference/4)%4;
+        difference += 1; 
 
-    if difference >= 0:
-        resp = achievement_scale[5]
-    if difference >= 2:
-        resp = achievement_scale[6]
-    if difference >= 5:
-        resp = achievement_scale[7]
-    if difference >= 7:
-        resp = achievement_scale[8]
+        resp = achievement_scale[math.floor(difference)];
+
+    else:
+        # positive
+        difference += 1;
+        difference = (difference/4)%4;
+        difference += 5; 
+        resp = achievement_scale[math.floor(difference)];
+
+
+    # if difference < 0:
+    #     resp = achievement_scale[4]
+    # if difference < -2:
+    #     resp = achievement_scale[3]
+    # if difference < -5:
+    #     resp = achievement_scale[2]
+    # if difference < -7:
+    #     resp = achievement_scale[1]
+
+    # if difference >= 0:
+    #     resp = achievement_scale[5]
+    # if difference >= 2:
+    #     resp = achievement_scale[6]
+    # if difference >= 5:
+    #     resp = achievement_scale[7]
+    # if difference >= 7:
+    #     resp = achievement_scale[8]
 
     return resp
