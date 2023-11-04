@@ -1,4 +1,4 @@
-<img src="screenshot1.png" width=30% height=30%></img>
+<img src="screenshot1.png" width=45% height=45%></img>
 
 # Check it out at [ActionArtisan](https://main.dc3wixtzurzli.amplifyapp.com)
 
